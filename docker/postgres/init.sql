@@ -5,16 +5,16 @@
 DO $$
 BEGIN
   IF NOT EXISTS (
-    SELECT FROM pg_catalog.pg_roles WHERE rolname = 'app_user'
+    SELECT FROM pg_catalog.pg_roles WHERE rolname = 'avon'
   ) THEN
-    CREATE ROLE app_user LOGIN PASSWORD 'app_password';
+    CREATE ROLE avon LOGIN PASSWORD '123456';
   END IF;
 END
 $$;
 
--- Ensure privileges for app_user on public schema
-GRANT USAGE ON SCHEMA public TO app_user;
-GRANT CREATE ON SCHEMA public TO app_user;
+-- Ensure privileges for avon on public schema
+GRANT USAGE ON SCHEMA public TO avon;
+GRANT CREATE ON SCHEMA public TO avon;
 
 -- Tables (match server expectations; harmless if app also creates with IF NOT EXISTS)
 CREATE TABLE IF NOT EXISTS users (
@@ -40,10 +40,10 @@ CREATE TABLE IF NOT EXISTS todos (
 CREATE INDEX IF NOT EXISTS idx_todos_user_id ON todos(user_id);
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 
--- Grants for app_user on current and future tables
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_user;
+-- Grants for avon on current and future tables
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO avon;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
-  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO app_user;
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO avon;
 
 -- Optional seed examples (uncomment to seed)
 -- INSERT INTO users (id, email, password_hash, name)

@@ -65,7 +65,7 @@ router.put('/:id', requireAuth, async (req: AuthRequest, res) => {
     const userId = req.user!.id;
     const { id } = req.params;
     const { title, description, completed } = req.body || {};
-
+    console.log({userId, id, title, description, completed});
     const result = await pool.query(
       `UPDATE todos SET title = COALESCE($1, title), description = COALESCE($2, description), completed = COALESCE($3, completed), updated_at = NOW()
        WHERE id = $4 AND user_id = $5
@@ -76,6 +76,7 @@ router.put('/:id', requireAuth, async (req: AuthRequest, res) => {
     if (result.rowCount === 0) {
       return res.status(404).json({ error: 'Todo not found' });
     }
+    console.log(result.rows[0]);
     return res.json(result.rows[0]);
   } catch (err) {
     console.error('Update todo error', err);

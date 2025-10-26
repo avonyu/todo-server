@@ -1,10 +1,9 @@
 import app from './app.js';
 import { PORT } from './config.js';
-import { initDb, pool } from './db.js';
+import { pool } from './db.js';
 
 async function start() {
   try {
-    await initDb();
     app.listen(PORT, () => {
       console.log(`Server listening on http://localhost:${PORT}`);
     });
