@@ -2,9 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
-import authRoutes from './routes/auth';
-import userRoutes from './routes/users';
-import todoRoutes from './routes/todos';
+import authRoutes from '@/routes/auth.js';
+import userRoutes from '@/routes/users.js';
+import todoRoutes from '@/routes/todos.js';
 
 const app = express();
 

@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { pool } from '../db';
+import { pool } from '@/db.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../config';
+import { JWT_SECRET } from '@/config.js';
 import { randomUUID } from 'crypto';
 
 const router = Router();

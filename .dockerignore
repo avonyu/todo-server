@@ -1,0 +1,10 @@
+node_modules
+src
+**/*.ts
+**/*.tsx
+**/*.map
+.env
+.git
+.gitignore
+README.md
+npm-debug.log

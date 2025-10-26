@@ -1,6 +1,6 @@
-import app from './app';
-import { PORT } from './config';
-import { initDb, pool } from './db';
+import app from './app.js';
+import { PORT } from './config.js';
+import { initDb, pool } from './db.js';
 
 async function start() {
   try {
